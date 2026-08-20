@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My To-Do List</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>My To-Do List 📝</h1>
+
+        <div class="input-area">
+
+            <input
+                type="text"
+                id="taskInput"
+                placeholder="What do you need to do?"
+            >
+
+            <button class="add-btn" onclick="addTask()">
+                Add
+            </button>
+
+        </div>
+
+        <ul id="taskList"></ul>
+
+    </div>
+
+    <script>
+        function addTask() {
+
+            let input = document.getElementById("taskInput");
+            let task = input.value;
+
+            if (task === "") {
+                return;
+            }
+
+            let li = document.createElement("li");
+
+            li.innerHTML = `
+                <input type="checkbox">
+                <span>${task}</span>
+
+                <button
+                    class="delete-btn"
+                    onclick="this.parentElement.remove()">
+                    Delete
+                </button>
+            `;
+
+            document.getElementById("taskList").appendChild(li);
+
+            input.value = "";
+        }
+    </script>
+
+</body>
+</html>
